@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.todoplanner.presentation.DetailsFragment">
+
+    <data>
+        <variable
+            name="detailsViewModel"
+            type="com.example.android.todoplanner.presentation.viewmodels.DetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_margin"
+            android:layout_marginBottom="@dimen/card_margin"
+            android:focusable="true"
+            app:cardElevation="@dimen/card_elevation"
+            app:contentPadding="@dimen/card_content_padding"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iw_event_status"
+                    android:layout_width="@dimen/standard_icon_size"
+                    android:layout_height="@dimen/standard_icon_size"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    app:eventStatusToDrawable="@{detailsViewModel.eventInfo.status}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tw_event_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tw_event_name"
+                    tools:src="@drawable/ic_event_upcoming_48" />
+
+                <TextView
+                    android:id="@+id/tw_event_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/standard_grid_2x"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
+                    android:text="@{detailsViewModel.eventInfo.name}"
+                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                    app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                    app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iw_event_status"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Название мероприятия" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/bar1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="iw_event_status,tw_event_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iw_event_desc"
+                    android:layout_width="@dimen/standard_icon_size"
+                    android:layout_height="@dimen/standard_icon_size"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_event_note_48"
+                    app:layout_constraintBottom_toBottomOf="@+id/tw_event_desc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tw_event_desc" />
+
+                <TextView
+                    android:id="@+id/tw_event_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/standard_grid_2x"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
+                    android:text="@{detailsViewModel.eventInfo.desc}"
+                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                    app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                    app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iw_event_desc"
+                    app:layout_constraintTop_toBottomOf="@+id/bar1"
+                    tools:text="Описание мероприятия" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/bar2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="iw_event_desc,tw_event_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iw_event_datetime"
+                    android:layout_width="@dimen/standard_icon_size"
+                    android:layout_height="@dimen/standard_icon_size"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_schedule_48"
+                    app:layout_constraintBottom_toBottomOf="@+id/tw_event_datetime"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tw_event_datetime" />
+
+                <TextView
+                    android:id="@+id/tw_event_datetime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/standard_grid_2x"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
+                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyItalic"
+                    app:dateTimeToHuman="@{detailsViewModel.eventInfo.dateTime}"
+                    app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                    app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iw_event_datetime"
+                    app:layout_constraintTop_toBottomOf="@+id/bar2"
+                    tools:text="Суббота, 5 декабря, 12:00" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/bar3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="iw_event_datetime,tw_event_datetime"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iw_event_place"
+                    android:layout_width="@dimen/standard_icon_size"
+                    android:layout_height="@dimen/standard_icon_size"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_location_on_48"
+                    app:layout_constraintBottom_toBottomOf="@+id/tw_event_place"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tw_event_place" />
+
+                <TextView
+                    android:id="@+id/tw_event_place"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/standard_grid_2x"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
+                    android:text="@{detailsViewModel.eventInfo.place}"
+                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                    app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                    app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iw_event_place"
+                    app:layout_constraintTop_toBottomOf="@+id/bar3"
+                    tools:text="Место проведения мероприятия" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/bar4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="iw_event_place,tw_event_place"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:id="@+id/div1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/standard_grid_2x"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bar4" />
+
+                <TextView
+                    android:id="@+id/tw_event_weather_label"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_grid"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
+                    android:text="@string/details_fragment_weather_info_header"
+                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                    app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                    app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/div1" />
+
+                <ImageView
+                    android:id="@+id/iw_event_weather_icon"
+                    android:layout_width="@dimen/large_icon_width"
+                    android:layout_height="@dimen/standard_icon_size"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:adjustViewBounds="true"
+                    android:scaleType="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tw_event_weather_label"
+                    tools:src="@drawable/ic_draft_48" />
+
+                <TextView
+                    android:id="@+id/tw_weather_temp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                    app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                    app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/iw_event_weather_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/tw_event_weather_label"
+                    tools:text="32 С" />
+
+                <TextView
+                    android:id="@+id/tw_weather_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/small_padding"
+                    android:paddingEnd="@dimen/small_padding"
+                    android:text=""
+                    android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                    app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                    app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/iw_event_weather_icon"
+                    app:layout_constraintTop_toBottomOf="@+id/tw_weather_temp"
+                    tools:text="Ясно" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/standard_grid_2x"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iw_event_weather_icon" />
+
+                <Button
+                    android:id="@+id/btn_set_visited"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standard_grid"
+                    android:text="@string/details_fragment_visited"
+                    android:visibility="@{detailsViewModel.btnSetVisitedVisibilityLiveData}"
+                    android:onClick="@{() -> detailsViewModel.onSetVisited()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+                <Button
+                    android:id="@+id/btn_goto_edit"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_grid"
+                    android:text="@string/details_fragment_goto_edit"
+                    android:visibility="@{detailsViewModel.btnSetVisitedVisibilityLiveData}"
+                    android:onClick="@{() -> detailsViewModel.onBeginEdit()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_set_visited" />
+
+                <Button
+                    android:id="@+id/btn_delete"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_grid"
+                    android:text="@string/details_fragment_delete"
+                    android:onClick="@{() -> detailsViewModel.onDelete()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_goto_edit" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
+</layout>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="shortInfo"
+            type="com.example.android.todoplanner.presentation.model.ViewEventShortInfo" />
+        <variable
+            name="clickListener"
+            type="com.example.android.todoplanner.presentation.adapters.EventItemClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:layout_marginTop="@dimen/card_margin"
+        android:layout_marginBottom="@dimen/card_margin"
+        app:cardElevation="@dimen/card_elevation"
+        app:contentPadding="@dimen/card_content_padding"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        android:clickable="true"
+        android:onClick="@{() -> clickListener.onClick(shortInfo)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/small_card_height">
+
+            <ImageView
+                android:id="@+id/iw_event_status_id"
+                android:layout_width="@dimen/standard_icon_size"
+                android:layout_height="@dimen/standard_icon_size"
+                android:layout_marginStart="@dimen/small_margin"
+                android:adjustViewBounds="true"
+                android:scaleType="center"
+                app:eventStatusToDrawable="@{shortInfo.status}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_event_upcoming_48" />
+
+            <ImageView
+                android:id="@+id/iw_see_details_id"
+                android:layout_width="@dimen/standard_icon_size"
+                android:layout_height="@dimen/standard_icon_size"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:adjustViewBounds="true"
+                android:scaleType="center"
+                android:src="@drawable/ic_arrow_forward_48"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/div_left"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/standard_grid"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iw_event_status_id"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/div_right"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/standard_grid"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iw_see_details_id"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tw_date_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:maxLines="1"
+                android:paddingStart="@dimen/small_padding"
+                android:paddingEnd="@dimen/small_padding"
+                app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                app:dateTimeToHuman="@{shortInfo.dateTime}"
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.HeadlineNormal"
+                app:layout_constraintEnd_toStartOf="@+id/div_right"
+                app:layout_constraintStart_toEndOf="@+id/div_left"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Воскресенье, 5 декабря" />
+
+            <TextView
+                android:id="@+id/tw_event_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="@dimen/small_padding"
+                android:paddingEnd="@dimen/small_padding"
+                android:text="@{shortInfo.name}"
+                android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                app:layout_constraintEnd_toStartOf="@+id/div_right"
+                app:layout_constraintStart_toEndOf="@+id/div_left"
+                app:layout_constraintTop_toBottomOf="@+id/tw_date_time"
+                tools:text="Мероприятие" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

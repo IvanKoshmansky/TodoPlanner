@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">TodoPlanner</string>
+    <string name="main_fragment_label">Обзор событий</string>
+    <string name="edit_fragment_label_new">Новое мероприятие</string>
+    <string name="edit_fragment_label_edit">Редактирование мероприятия</string>
+    <string name="edit_fragment_card_title">Карточка мероприятия</string>
+    <string name="edit_fragment_card_event_name">Название мероприятия</string>
+    <string name="edit_fragment_card_event_name_hint">Введите название мероприятия</string>
+    <string name="edit_fragment_card_event_desc">Описание мероприятия</string>
+    <string name="edit_fragment_card_event_desc_hint">Введите описание мероприятия</string>
+    <string name="edit_fragment_card_event_date_time">Дата и время проведения мероприятия</string>
+    <string name="edit_fragment_card_event_select_date">Выбрать дату</string>
+    <string name="edit_fragment_card_event_select_time">Выбрать время</string>
+    <string name="edit_fragment_card_event_location">Место проведения мероприятия</string>
+    <string name="edit_fragment_card_event_location_hint">Введите место проведения мероприятия</string>
+    <string name="edit_fragment_card_event_save">Сохранить</string>
+    <string name="edit_fragment_weather_info_header">Информация о погоде</string>
+    <string name="edit_fragment_weather_info_update">Обновить</string>
+    <string name="snackbar_saved">Сохранено</string>
+    <string name="snackbar_deleted">Удалено</string>
+    <string name="snackbar_need_to_fill_name">Заполните название мероприятия</string>
+    <string name="details_fragment_label">Детали мероприятия</string>
+    <string name="details_fragment_weather_info_header">Информация о погоде</string>
+    <string name="details_fragment_goto_edit">Изменить</string>
+    <string name="details_fragment_delete">Удалить</string>
+    <string name="details_fragment_visited">Отметить как посещенное</string>
+    <string name="loading_process_updating">Обновление...</string>
+    <string name="loading_process_unavailable">Недоступно</string>
+    <string name="main_menu_delete_visited">Удалить посещенные</string>
+    <string name="main_menu_delete_missed">Удалить пропущенные</string>
+    <string name="main_menu_update_status">Обновить статус</string>
+</resources>

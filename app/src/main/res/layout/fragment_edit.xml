@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.android.todoplanner.presentation.EditFragment">
+
+    <data>
+        <variable
+            name="editViewModel"
+            type="com.example.android.todoplanner.presentation.viewmodels.EditViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_margin"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:focusable="true"
+                app:cardElevation="@dimen/card_elevation"
+                app:contentPadding="@dimen/card_content_padding"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/btn_save_event"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:text="@string/edit_fragment_card_event_save"
+                        android:onClick="@{() -> editViewModel.onSaveEvent()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ed_event_location" />
+
+                    <EditText
+                        android:id="@+id/ed_event_location"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:hint="@string/edit_fragment_card_event_location_hint"
+                        android:text="@={editViewModel.eventPlaceLiveData}"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_location_label" />
+
+                    <TextView
+                        android:id="@+id/tw_location_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:text="@string/edit_fragment_card_event_location"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_select_date" />
+
+                    <Button
+                        android:id="@+id/btn_select_time"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:onClick="@{() -> editViewModel.onTimePickerShow()}"
+                        android:text="@string/edit_fragment_card_event_select_time"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_date_time_edited" />
+
+                    <TextView
+                        android:id="@+id/tw_date_time_edited"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/standard_margin"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleItalic"
+                        app:dateTimeToHuman="@{editViewModel.eventDateTimeLiveData}"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_date_time_label"
+                        tools:text="@string/edit_fragment_card_event_date_time" />
+
+                    <TextView
+                        android:id="@+id/tw_date_time_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:text="@string/edit_fragment_card_event_date_time"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ed_event_desc" />
+
+                    <EditText
+                        android:id="@+id/ed_event_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:hint="@string/edit_fragment_card_event_desc_hint"
+                        android:text="@={editViewModel.eventDescLiveData}"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_desc_label" />
+
+                    <TextView
+                        android:id="@+id/tw_desc_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:text="@string/edit_fragment_card_event_desc"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ed_event_name" />
+
+                    <TextView
+                        android:id="@+id/tw_name_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:text="@string/edit_fragment_card_event_name"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/ed_event_name"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/edit_text_height"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:hint="@string/edit_fragment_card_event_name_hint"
+                        android:text="@={editViewModel.eventNameLiveData}"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_name_label" />
+
+                    <Button
+                        android:id="@+id/btn_select_date"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:onClick="@{() -> editViewModel.onDatePickerShow()}"
+                        android:text="@string/edit_fragment_card_event_select_date"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_date_time_edited" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/card_margin"
+                android:layout_marginBottom="@dimen/card_margin"
+                android:focusable="true"
+                app:cardElevation="@dimen/card_elevation"
+                app:contentPadding="@dimen/card_content_padding"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:id="@+id/btn_weather_upd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit_fragment_weather_info_update"
+                        android:onClick="@{() -> editViewModel.onWeatherUpdate()}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_weather_desc" />
+
+                    <TextView
+                        android:id="@+id/tw_weather_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iw_weather_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_weather_temp"
+                        tools:text="Облачно" />
+
+                    <TextView
+                        android:id="@+id/tw_weather_temp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:text=""
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.BodyNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/iw_weather_icon"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_weather_header"
+                        tools:text="32 C" />
+
+                    <TextView
+                        android:id="@+id/tw_weather_header"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/small_padding"
+                        android:paddingEnd="@dimen/small_padding"
+                        android:text="@string/edit_fragment_weather_info_header"
+                        android:textAppearance="@style/TextAppearance.MdcTypographyStyles.SubtitleNormal"
+                        app:firstBaselineToTopHeight="@dimen/standard_grid_2x"
+                        app:lastBaselineToBottomHeight="@dimen/standard_grid"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iw_weather_icon"
+                        android:layout_width="@dimen/large_icon_width"
+                        android:layout_height="@dimen/standard_icon_size"
+                        android:layout_marginStart="@dimen/small_margin"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:adjustViewBounds="true"
+                        android:scaleType="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tw_weather_header"
+                        tools:src="@drawable/ic_draft_48" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+</layout>
