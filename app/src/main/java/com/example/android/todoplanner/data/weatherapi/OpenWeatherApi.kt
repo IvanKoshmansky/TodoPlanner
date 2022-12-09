@@ -11,7 +11,7 @@ import retrofit2.http.Query
 const val WEATHER_API_KEY = "c7dac47ac4dfa65b8f351eb98ac40ef7"
 const val WEATHER_API_UNITS = "metric"
 const val WEATHER_API_DESCRIPTION_LANG = "ru"
-const val WEATHER_API_ICONS_STORAGE_FMT = "http://openweathermap.org/img/wn/%s@2x.png"
+const val WEATHER_API_ICONS_STORAGE_FMT = "https://openweathermap.org/img/wn/%s@2x.png"
 
 private const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
 private const val FORECAST_QUERY = "forecast"
