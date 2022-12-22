@@ -10,10 +10,12 @@
             type="com.example.android.todoplanner.presentation.viewmodels.MainViewModel" />
     </data>
 
+    <!-- ? взять атрибут из темы -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_fragment_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?background_drawable">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_events"

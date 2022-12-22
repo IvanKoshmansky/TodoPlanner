@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- атрибут используется в теме -->
+    <attr name="background_drawable" format="reference"/>
+</resources>
